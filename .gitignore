@@ -1,0 +1,34 @@
+# ===== Build =====
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# ===== Maven local bundle (substituído pelo Maven Wrapper) =====
+mvn_dist/
+
+# ===== IDEs / Editores =====
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+nbproject/
+*.swp
+
+# ===== Sistema Operacional =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Logs / Temporários =====
+*.log
+logs/
+*.tmp
+
+# ===== Banco H2 (arquivos, caso deixe de ser em memória) =====
+*.db
+*.mv.db
+*.trace.db

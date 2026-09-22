@@ -1,0 +1,158 @@
+/* ==========================================================================
+   FIELDSERVICE 2.0 - DESIGN SYSTEM TOKENS (3 THEMES: DARK, LIGHT, SUPER DARK)
+   ========================================================================== */
+
+/* 1. TEMA ESCURO PADRÃO */
+:root, [data-theme="dark"] {
+    --fs-bg: #0B0D10;
+    --fs-surface: #12151A;
+    --fs-card: #181C22;
+    --fs-card-hover: #1E232B;
+    --fs-card-highlight: #1E232B;
+    --fs-outline: #292F38;
+    --fs-outline-focus: #4C8DFF;
+
+    /* Textos */
+    --fs-text-primary: #FFFFFF;
+    --fs-text-secondary: #A8AFBA;
+    --fs-text-muted: #6C7480;
+
+    /* Cores Semânticas / Ações */
+    --fs-primary: #4C8DFF;
+    --fs-primary-hover: #3A75DB;
+    --fs-primary-subtle: rgba(76, 141, 255, 0.15);
+
+    --fs-success: #3DD68C;
+    --fs-success-subtle: rgba(61, 214, 140, 0.15);
+
+    --fs-warning: #FFB74D;
+    --fs-warning-subtle: rgba(255, 183, 77, 0.15);
+
+    --fs-danger: #FF5A5F;
+    --fs-danger-subtle: rgba(255, 90, 95, 0.15);
+
+    --fs-info: #4C8DFF;
+    --fs-info-subtle: rgba(76, 141, 255, 0.15);
+
+    /* Cores de Prioridades (Seção 9) */
+    --fs-prio-low: #66BB6A;
+    --fs-prio-low-bg: rgba(102, 187, 106, 0.15);
+
+    --fs-prio-medium: #FFCA3A;
+    --fs-prio-medium-bg: rgba(255, 202, 58, 0.15);
+
+    --fs-prio-high: #FF922B;
+    --fs-prio-high-bg: rgba(255, 146, 43, 0.15);
+
+    --fs-prio-critical: #FF4D4F;
+    --fs-prio-critical-bg: rgba(255, 77, 79, 0.15);
+
+    /* Cores de Status (Seção 9) */
+    --fs-status-neutral: #9AA5B1;
+    --fs-status-neutral-bg: rgba(154, 165, 177, 0.15);
+
+    --fs-status-progress: #64B5F6;
+    --fs-status-progress-bg: rgba(100, 181, 246, 0.15);
+
+    --fs-status-completed: #3DD68C;
+    --fs-status-completed-bg: rgba(61, 214, 140, 0.15);
+
+    --fs-status-cancelled: #8A929E;
+    --fs-status-cancelled-bg: rgba(138, 146, 158, 0.15);
+
+    /* Dimensões e Raios */
+    --fs-radius-card: 16px;
+    --fs-radius-btn: 12px;
+    --fs-radius-pill: 100px;
+    --fs-radius-input: 10px;
+
+    /* Sombras e Bordas */
+    --fs-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+    --fs-shadow-glow: 0 0 15px rgba(76, 141, 255, 0.25);
+    --fs-nav-bg: #12151A;
+}
+
+/* 2. TEMA CLARO */
+[data-theme="light"] {
+    --fs-bg: #EEF1F5;
+    --fs-surface: #F8FAFC;
+    --fs-card: #FFFFFF;
+    --fs-card-hover: #F1F5F9;
+    --fs-card-highlight: #E2E8F0;
+    --fs-outline: #D7DEE7;
+    --fs-outline-focus: #3A75DB;
+
+    /* Textos */
+    --fs-text-primary: #10131A;
+    --fs-text-secondary: #5B636F;
+    --fs-text-muted: #8492A6;
+
+    /* Semânticas */
+    --fs-primary: #2563EB;
+    --fs-primary-hover: #1D4ED8;
+    --fs-primary-subtle: rgba(37, 99, 235, 0.12);
+
+    --fs-success: #16A34A;
+    --fs-success-subtle: rgba(22, 163, 74, 0.12);
+
+    --fs-warning: #D97706;
+    --fs-warning-subtle: rgba(217, 119, 6, 0.12);
+
+    --fs-danger: #DC2626;
+    --fs-danger-subtle: rgba(220, 38, 38, 0.12);
+
+    --fs-info: #0284C7;
+    --fs-info-subtle: rgba(2, 132, 199, 0.12);
+
+    /* Cores de Prioridades */
+    --fs-prio-low: #2E7D32;
+    --fs-prio-low-bg: rgba(46, 125, 50, 0.12);
+
+    --fs-prio-medium: #B45309;
+    --fs-prio-medium-bg: rgba(180, 83, 9, 0.12);
+
+    --fs-prio-high: #C2410C;
+    --fs-prio-high-bg: rgba(194, 65, 12, 0.12);
+
+    --fs-prio-critical: #B91C1C;
+    --fs-prio-critical-bg: rgba(185, 28, 28, 0.12);
+
+    /* Cores de Status */
+    --fs-status-neutral: #4B5563;
+    --fs-status-neutral-bg: rgba(75, 85, 99, 0.12);
+
+    --fs-status-progress: #0284C7;
+    --fs-status-progress-bg: rgba(2, 132, 199, 0.12);
+
+    --fs-status-completed: #16A34A;
+    --fs-status-completed-bg: rgba(22, 163, 74, 0.12);
+
+    --fs-status-cancelled: #6B7280;
+    --fs-status-cancelled-bg: rgba(107, 114, 128, 0.12);
+
+    /* Sombras e Bordas */
+    --fs-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+    --fs-shadow-glow: 0 0 12px rgba(37, 99, 235, 0.2);
+    --fs-nav-bg: #FFFFFF;
+}
+
+/* 3. TEMA SUPER DARK (AMOLED) */
+[data-theme="super-dark"] {
+    --fs-bg: #000000;
+    --fs-surface: #07080A;
+    --fs-card: #0C0E12;
+    --fs-card-hover: #14171E;
+    --fs-card-highlight: #14171E;
+    --fs-outline: #1A1F26;
+    --fs-outline-focus: #4C8DFF;
+
+    /* Textos */
+    --fs-text-primary: #FFFFFF;
+    --fs-text-secondary: #9AA5B1;
+    --fs-text-muted: #57606A;
+
+    /* Sombras */
+    --fs-shadow-card: 0 2px 10px rgba(0, 0, 0, 0.9);
+    --fs-shadow-glow: 0 0 16px rgba(76, 141, 255, 0.35);
+    --fs-nav-bg: #07080A;
+}

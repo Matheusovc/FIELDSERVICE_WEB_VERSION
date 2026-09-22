@@ -1,0 +1,816 @@
+/* ==========================================================================
+   FIELDSERVICE 2.0 - GLOBAL APPLICATION STYLES & COMPONENTS
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fs-bg);
+    color: var(--fs-text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--fs-text-primary);
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.text-secondary-fs {
+    color: var(--fs-text-secondary) !important;
+}
+
+.text-muted-fs {
+    color: var(--fs-text-muted) !important;
+}
+
+/* ==========================================================================
+   NAVBAR & HEADER & BOTTOM NAV
+   ========================================================================== */
+.fs-navbar {
+    background-color: var(--fs-nav-bg);
+    border-bottom: 1px solid var(--fs-outline);
+    padding: 0.85rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.fs-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--fs-text-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.fs-brand-icon-sm {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--fs-primary), #2b6ad4);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: var(--fs-shadow-glow);
+}
+
+.fs-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fs-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--fs-radius-pill);
+    color: var(--fs-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.fs-nav-link:hover {
+    color: var(--fs-text-primary);
+    background-color: var(--fs-card-hover);
+}
+
+.fs-nav-link.active {
+    color: #FFFFFF;
+    background-color: var(--fs-primary);
+    font-weight: 600;
+    box-shadow: var(--fs-shadow-glow);
+}
+
+/* Mobile Bottom Navigation (equivalente ao app) */
+.fs-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--fs-nav-bg);
+    border-top: 1px solid var(--fs-outline);
+    padding: 0.5rem 0.75rem;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    justify-content: space-around;
+}
+
+.fs-bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--fs-text-secondary);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.fs-bottom-nav-item i {
+    font-size: 1.25rem;
+}
+
+.fs-bottom-nav-item.active {
+    color: var(--fs-primary);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .fs-nav-links {
+        display: none;
+    }
+    .fs-bottom-nav {
+        display: flex;
+    }
+    body {
+        padding-bottom: 70px;
+    }
+}
+
+/* Main Container */
+.fs-main-content {
+    flex: 1 0 auto;
+    padding: 2rem 0;
+}
+
+/* ==========================================================================
+   CARDS & CONTAINERS
+   ========================================================================== */
+.fs-card {
+    background-color: var(--fs-card);
+    border: 1px solid var(--fs-outline);
+    border-radius: var(--fs-radius-card);
+    padding: 1.25rem;
+    box-shadow: var(--fs-shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.fs-card-interactive {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.fs-card-interactive:hover {
+    background-color: var(--fs-card-hover);
+    border-color: var(--fs-primary);
+    transform: translateY(-2px);
+    color: inherit;
+}
+
+/* Summary Metric Cards */
+.fs-metric-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--fs-radius-card);
+    background-color: var(--fs-card);
+    border: 1px solid var(--fs-outline);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fs-metric-card:hover {
+    transform: translateY(-2px);
+}
+
+.fs-metric-card-pending {
+    border-left: 4px solid var(--fs-warning);
+}
+.fs-metric-card-inprogress {
+    border-left: 4px solid var(--fs-info);
+}
+.fs-metric-card-completed {
+    border-left: 4px solid var(--fs-success);
+}
+
+.fs-metric-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 4px;
+}
+
+.fs-metric-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.fs-metric-icon-pending {
+    background-color: var(--fs-warning-subtle);
+    color: var(--fs-warning);
+}
+
+.fs-metric-icon-inprogress {
+    background-color: var(--fs-info-subtle);
+    color: var(--fs-info);
+}
+
+.fs-metric-icon-completed {
+    background-color: var(--fs-success-subtle);
+    color: var(--fs-success);
+}
+
+/* ==========================================================================
+   BADGES & PILLS
+   ========================================================================== */
+.fs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--fs-radius-pill);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.fs-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Badges de Prioridade */
+.badge-priority-low {
+    background-color: var(--fs-prio-low-bg);
+    color: var(--fs-prio-low);
+    border: 1px solid rgba(102, 187, 106, 0.3);
+}
+.badge-priority-low .fs-badge-dot { background-color: var(--fs-prio-low); }
+
+.badge-priority-medium {
+    background-color: var(--fs-prio-medium-bg);
+    color: var(--fs-prio-medium);
+    border: 1px solid rgba(255, 202, 58, 0.3);
+}
+.badge-priority-medium .fs-badge-dot { background-color: var(--fs-prio-medium); }
+
+.badge-priority-high {
+    background-color: var(--fs-prio-high-bg);
+    color: var(--fs-prio-high);
+    border: 1px solid rgba(255, 146, 43, 0.3);
+}
+.badge-priority-high .fs-badge-dot { background-color: var(--fs-prio-high); }
+
+.badge-priority-critical {
+    background-color: var(--fs-prio-critical-bg);
+    color: var(--fs-prio-critical);
+    border: 1px solid rgba(255, 77, 79, 0.3);
+}
+.badge-priority-critical .fs-badge-dot { background-color: var(--fs-prio-critical); }
+
+/* Badges de Status */
+.badge-status-neutral {
+    background-color: var(--fs-status-neutral-bg);
+    color: var(--fs-status-neutral);
+    border: 1px solid rgba(154, 165, 177, 0.3);
+}
+.badge-status-neutral .fs-badge-dot { background-color: var(--fs-status-neutral); }
+
+.badge-status-progress {
+    background-color: var(--fs-status-progress-bg);
+    color: var(--fs-status-progress);
+    border: 1px solid rgba(100, 181, 246, 0.3);
+}
+.badge-status-progress .fs-badge-dot { background-color: var(--fs-status-progress); }
+
+.badge-status-completed {
+    background-color: var(--fs-status-completed-bg);
+    color: var(--fs-status-completed);
+    border: 1px solid rgba(61, 214, 140, 0.3);
+}
+.badge-status-completed .fs-badge-dot { background-color: var(--fs-status-completed); }
+
+.badge-status-cancelled {
+    background-color: var(--fs-status-cancelled-bg);
+    color: var(--fs-status-cancelled);
+    border: 1px solid rgba(138, 146, 158, 0.3);
+}
+.badge-status-cancelled .fs-badge-dot { background-color: var(--fs-status-cancelled); }
+
+.badge-status-warning {
+    background-color: var(--fs-warning-subtle);
+    color: var(--fs-warning);
+    border: 1px solid rgba(255, 183, 77, 0.3);
+}
+.badge-status-warning .fs-badge-dot { background-color: var(--fs-warning); }
+
+/* ==========================================================================
+   FILTER CHIPS
+   ========================================================================== */
+.fs-filter-chips {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+}
+
+.fs-filter-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.fs-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--fs-radius-pill);
+    background-color: var(--fs-card);
+    border: 1px solid var(--fs-outline);
+    color: var(--fs-text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.fs-chip:hover {
+    background-color: var(--fs-card-hover);
+    color: var(--fs-text-primary);
+    border-color: var(--fs-text-secondary);
+}
+
+.fs-chip.active {
+    background-color: var(--fs-primary);
+    color: #FFFFFF;
+    border-color: var(--fs-primary);
+    font-weight: 600;
+    box-shadow: var(--fs-shadow-glow);
+}
+
+.fs-chip-count {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.fs-chip.active .fs-chip-count {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+}
+
+/* ==========================================================================
+   TIMELINE (Linha do Tempo de Status do Chamado)
+   ========================================================================== */
+.fs-timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+}
+
+.fs-timeline::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 11px;
+    width: 2px;
+    background-color: var(--fs-outline);
+}
+
+.fs-timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.fs-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.fs-timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--fs-surface);
+    border: 2px solid var(--fs-outline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--fs-text-muted);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.fs-timeline-item.completed .fs-timeline-marker {
+    background-color: var(--fs-success);
+    border-color: var(--fs-success);
+    color: #FFFFFF;
+}
+
+.fs-timeline-item.active .fs-timeline-marker {
+    background-color: var(--fs-primary);
+    border-color: var(--fs-primary);
+    color: #FFFFFF;
+    box-shadow: 0 0 10px var(--fs-primary);
+}
+
+.fs-timeline-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--fs-text-primary);
+    margin-bottom: 2px;
+}
+
+.fs-timeline-item.pending .fs-timeline-title {
+    color: var(--fs-text-muted);
+}
+
+/* ==========================================================================
+   BUTTONS & INPUTS & UTILITIES
+   ========================================================================== */
+.fs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--fs-radius-btn);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    line-height: 1.2;
+}
+
+.fs-btn-primary {
+    background-color: var(--fs-primary);
+    color: #FFFFFF;
+    border-color: var(--fs-primary);
+}
+
+.fs-btn-primary:hover {
+    background-color: var(--fs-primary-hover);
+    box-shadow: var(--fs-shadow-glow);
+    color: #FFFFFF;
+}
+
+.fs-btn-outline {
+    background-color: transparent;
+    border-color: var(--fs-outline);
+    color: var(--fs-text-primary);
+}
+
+.fs-btn-outline:hover {
+    background-color: var(--fs-card-hover);
+    border-color: var(--fs-text-secondary);
+    color: var(--fs-text-primary);
+}
+
+.fs-btn-block {
+    width: 100%;
+}
+
+.fs-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--fs-primary-subtle);
+    color: var(--fs-primary);
+    border: 2px solid var(--fs-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.fs-avatar-lg {
+    width: 72px;
+    height: 72px;
+    font-size: 1.6rem;
+}
+
+/* Empty States */
+.fs-empty-state {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+}
+
+.fs-empty-icon {
+    font-size: 3.5rem;
+    color: var(--fs-text-muted);
+    margin-bottom: 1rem;
+}
+
+/* Modals */
+.modal-content.fs-modal-content {
+    background-color: var(--fs-card);
+    border: 1px solid var(--fs-outline);
+    border-radius: var(--fs-radius-card);
+    color: var(--fs-text-primary);
+    box-shadow: var(--fs-shadow-card);
+}
+
+.fs-modal-header {
+    border-bottom: 1px solid var(--fs-outline);
+    padding: 1.25rem 1.5rem;
+}
+
+.fs-modal-footer {
+    border-top: 1px solid var(--fs-outline);
+    padding: 1.25rem 1.5rem;
+}
+
+.btn-close-fs {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+[data-theme="light"] .btn-close-fs {
+    filter: none;
+}
+
+/* ==========================================================================
+   FORM CONTROLS (INPUTS, LABELS) — usados no login e formulários
+   ========================================================================== */
+.fs-form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--fs-text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.fs-input {
+    width: 100%;
+    background-color: var(--fs-surface);
+    color: var(--fs-text-primary);
+    border: 1px solid var(--fs-outline);
+    border-radius: var(--fs-radius-input);
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.fs-input::placeholder {
+    color: var(--fs-text-muted);
+    opacity: 1;
+}
+
+.fs-input:hover {
+    border-color: var(--fs-text-muted);
+}
+
+/* Variante textarea */
+textarea.fs-input {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* Variante select: remove a seta nativa e desenha uma própria (chevron) */
+select.fs-input {
+    cursor: pointer;
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23A8AFBA' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+/* Opções do select seguem o tema (fundo escuro) */
+select.fs-input option {
+    background-color: var(--fs-card);
+    color: var(--fs-text-primary);
+}
+
+.fs-input:focus {
+    outline: none;
+    border-color: var(--fs-outline-focus);
+    box-shadow: 0 0 0 3px var(--fs-primary-subtle);
+    background-color: var(--fs-card);
+}
+
+.fs-input:-webkit-autofill,
+.fs-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--fs-text-primary);
+    -webkit-box-shadow: 0 0 0 1000px var(--fs-surface) inset;
+    caret-color: var(--fs-text-primary);
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Overrides do Bootstrap para respeitar o tema dark (modais, switches) */
+.form-control,
+.form-select {
+    background-color: var(--fs-surface);
+    color: var(--fs-text-primary);
+    border: 1px solid var(--fs-outline);
+    border-radius: var(--fs-radius-input);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--fs-card);
+    color: var(--fs-text-primary);
+    border-color: var(--fs-outline-focus);
+    box-shadow: 0 0 0 3px var(--fs-primary-subtle);
+}
+
+.form-control::placeholder {
+    color: var(--fs-text-muted);
+}
+
+.form-check-input {
+    background-color: var(--fs-surface);
+    border: 1px solid var(--fs-outline);
+}
+
+.form-check-input:checked {
+    background-color: var(--fs-primary);
+    border-color: var(--fs-primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--fs-outline-focus);
+    box-shadow: 0 0 0 3px var(--fs-primary-subtle);
+}
+
+/* ==========================================================================
+   ALERTAS (feedback de erro / sucesso / info)
+   ========================================================================== */
+.fs-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--fs-radius-btn);
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+}
+
+.fs-alert i {
+    font-size: 1.1rem;
+}
+
+.fs-alert-danger {
+    background-color: var(--fs-danger-subtle);
+    color: var(--fs-danger);
+    border-color: rgba(255, 90, 95, 0.35);
+}
+
+.fs-alert-success {
+    background-color: var(--fs-success-subtle);
+    color: var(--fs-success);
+    border-color: rgba(61, 214, 140, 0.35);
+}
+
+.fs-alert-info {
+    background-color: var(--fs-info-subtle);
+    color: var(--fs-info);
+    border-color: rgba(76, 141, 255, 0.35);
+}
+
+/* Botão compacto */
+.fs-btn-sm {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.82rem;
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   DROPDOWN MENUS (trocador de tema / menu do usuário) — temizados
+   ========================================================================== */
+.dropdown-menu.fs-modal-content {
+    --bs-dropdown-bg: var(--fs-card);
+    --bs-dropdown-border-color: var(--fs-outline);
+    --bs-dropdown-link-color: var(--fs-text-primary);
+    --bs-dropdown-link-hover-color: var(--fs-text-primary);
+    --bs-dropdown-link-hover-bg: var(--fs-card-hover);
+    --bs-dropdown-link-active-color: var(--fs-text-primary);
+    --bs-dropdown-link-active-bg: var(--fs-card-hover);
+    min-width: 240px;
+    box-shadow: var(--fs-shadow-card);
+}
+
+.dropdown-menu.fs-modal-content .dropdown-item {
+    color: var(--fs-text-primary);
+    cursor: pointer;
+}
+
+.dropdown-menu.fs-modal-content .dropdown-item:hover,
+.dropdown-menu.fs-modal-content .dropdown-item:focus {
+    background-color: var(--fs-card-hover);
+    color: var(--fs-text-primary);
+}
+
+.dropdown-menu.fs-modal-content .dropdown-item.text-danger:hover {
+    background-color: var(--fs-danger-subtle);
+}
+
+.dropdown-menu.fs-modal-content .dropdown-divider {
+    border-top-color: var(--fs-outline);
+}
+
+/* Backdrop dos modais um pouco mais sutil no dark */
+.modal-backdrop.show {
+    opacity: 0.6;
+}
+
+/* Realce das cores utilitárias amarradas aos tokens do tema */
+.text-primary { color: var(--fs-primary) !important; }
+.text-success { color: var(--fs-success) !important; }
+.text-warning { color: var(--fs-warning) !important; }
+.text-danger  { color: var(--fs-danger)  !important; }
+.text-info    { color: var(--fs-info)    !important; }
+
+/* text-white é usado como "texto de destaque": no tema claro o branco puro
+   ficaria invisível sobre cartões brancos, então amarramos ao token primário. */
+.text-white { color: var(--fs-text-primary) !important; }
+
+/* ==========================================================================
+   BACKGROUND ANIMADO (WebGL) — usado na Home (/inicio)
+   ========================================================================== */
+.fs-gradient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;              /* atrás de todo o conteúdo */
+    overflow: hidden;
+    pointer-events: none;     /* nunca captura cliques/scroll */
+    background-color: #050505;
+}
+
+/* Scrim: escurece o gradiente para o conteúdo/texto permanecer legível.
+   Mais escuro no topo (onde fica a saudação) e ao redor das bordas. */
+.fs-gradient-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(11, 13, 16, 0.72) 0%, rgba(11, 13, 16, 0.55) 30%, rgba(11, 13, 16, 0.78) 100%),
+        radial-gradient(120% 80% at 50% 0%, transparent 30%, rgba(11, 13, 16, 0.55) 100%);
+}
+
+/* No tema claro o gradiente escuro destoaria: usamos um scrim claro. */
+[data-theme="light"] .fs-gradient-bg { background-color: #dfe5ee; }
+[data-theme="light"] .fs-gradient-scrim {
+    background:
+        linear-gradient(180deg, rgba(238, 241, 245, 0.82) 0%, rgba(238, 241, 245, 0.6) 30%, rgba(238, 241, 245, 0.85) 100%),
+        radial-gradient(120% 80% at 50% 0%, transparent 25%, rgba(238, 241, 245, 0.6) 100%);
+}
+
+/* Quando o background animado está ativo, o body não precisa pintar sua cor
+   (ela cobriria o canvas). A classe é adicionada ao <body> da home. */
+body.fs-has-gradient {
+    background-color: transparent;
+}
+
+/* Respeita usuários que preferem menos movimento: oculta a animação. */
+@media (prefers-reduced-motion: reduce) {
+    .fs-gradient-bg { display: none; }
+    .fs-gradient-scrim { display: none; }
+    body.fs-has-gradient { background-color: var(--fs-bg); }
+}

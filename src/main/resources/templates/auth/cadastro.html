@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta — FieldService</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <script th:src="@{/js/app.js}"></script>
+    <style>
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: radial-gradient(circle at top center, rgba(76, 141, 255, 0.08) 0%, transparent 60%), var(--fs-bg);
+        }
+        .login-card {
+            width: 100%;
+            max-width: 460px;
+            padding: 2.5rem 2rem;
+            background-color: var(--fs-card);
+            border: 1px solid var(--fs-outline);
+            border-radius: var(--fs-radius-card);
+            box-shadow: var(--fs-shadow-card);
+        }
+        .app-brand-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--fs-primary), #2b6ad4);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1.25rem auto;
+            box-shadow: var(--fs-shadow-glow);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <div class="app-brand-icon">
+                    <i class="bi bi-person-plus"></i>
+                </div>
+                <h1 class="h3 fw-bold mb-1">Criar conta</h1>
+                <p class="text-secondary-fs mb-0">Cadastre-se para gerenciar seus atendimentos</p>
+            </div>
+
+            <!-- Mensagem de erro de validação -->
+            <div th:if="${errorMessage}" class="fs-alert fs-alert-danger" role="alert">
+                <i class="bi bi-exclamation-triangle-fill flex-shrink-0"></i>
+                <span th:text="${errorMessage}">Erro ao cadastrar.</span>
+            </div>
+
+            <form th:action="@{/cadastro}" method="post" id="registerForm" novalidate>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                <div class="mb-3">
+                    <label for="name" class="fs-form-label">Nome completo</label>
+                    <input type="text" class="fs-input" id="name" name="name"
+                           th:value="${name}" placeholder="Ex.: Maria Souza"
+                           required autofocus autocomplete="name" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="fs-form-label">E-mail</label>
+                    <input type="email" class="fs-input" id="email" name="email"
+                           th:value="${email}" placeholder="voce@empresa.com"
+                           required autocomplete="email" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="fs-form-label">Senha</label>
+                    <input type="password" class="fs-input" id="password" name="password"
+                           placeholder="Mínimo de 6 caracteres" required autocomplete="new-password" />
+                </div>
+
+                <div class="mb-4">
+                    <label for="confirmPassword" class="fs-form-label">Confirmar senha</label>
+                    <input type="password" class="fs-input" id="confirmPassword" name="confirmPassword"
+                           placeholder="Repita a senha" required autocomplete="new-password" />
+                </div>
+
+                <button type="submit" class="fs-btn fs-btn-primary fs-btn-block">
+                    <i class="bi bi-check2-circle"></i>
+                    <span>Cadastrar</span>
+                </button>
+            </form>
+
+            <p class="text-center text-secondary-fs mt-4 mb-0" style="font-size: 0.9rem;">
+                Já tem uma conta?
+                <a th:href="@{/login}" class="text-primary fw-semibold text-decoration-none">Entrar</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            var p = document.getElementById('password').value;
+            var c = document.getElementById('confirmPassword').value;
+            if (p && c && p !== c) {
+                e.preventDefault();
+                alert('As senhas não coincidem.');
+            }
+        });
+    </script>
+</body>
+</html>

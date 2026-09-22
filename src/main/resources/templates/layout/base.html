@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title != null ? title + ' — FieldService' : 'FieldService'}">FieldService</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Design System Tokens & Styles -->
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <!-- Runtime Theme and Prefs Script -->
+    <script th:src="@{/js/app.js}"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar (Desktop & Mobile Header) -->
+    <header class="fs-navbar">
+        <div class="container d-flex align-items-center justify-content-between">
+            <!-- Brand -->
+            <a th:href="@{/inicio}" class="fs-brand">
+                <div class="fs-brand-icon-sm">
+                    <i class="bi bi-tools"></i>
+                </div>
+                <span>FieldService</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="d-none d-md-block">
+                <ul class="fs-nav-links">
+                    <li>
+                        <a th:href="@{/inicio}"
+                           class="fs-nav-link"
+                           th:classappend="${activePage == 'inicio' ? 'active' : ''}">
+                            <i class="bi bi-house-door"></i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/chamados}"
+                           class="fs-nav-link"
+                           th:classappend="${activePage == 'chamados' ? 'active' : ''}">
+                            <i class="bi bi-ticket-detailed"></i>
+                            <span>Chamados</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/perfil}"
+                           class="fs-nav-link"
+                           th:classappend="${activePage == 'perfil' ? 'active' : ''}">
+                            <i class="bi bi-person"></i>
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- User Menu & Quick Theme -->
+            <div class="d-flex align-items-center gap-3">
+                <!-- Theme Quick Switch Dropdown -->
+                <div class="dropdown">
+                    <button class="fs-btn fs-btn-outline py-1 px-2"
+                            type="button"
+                            id="themeDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            title="Alternar Tema">
+                        <i class="bi bi-palette-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end fs-modal-content p-2" aria-labelledby="themeDropdown">
+                        <li>
+                            <button class="dropdown-item rounded-2 d-flex align-items-center gap-2 py-2"
+                                    type="button" onclick="setFieldServiceTheme('dark')">
+                                <i class="bi bi-moon-stars-fill text-primary"></i>
+                                <span>Escuro (Padrão)</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item rounded-2 d-flex align-items-center gap-2 py-2"
+                                    type="button" onclick="setFieldServiceTheme('light')">
+                                <i class="bi bi-sun-fill text-warning"></i>
+                                <span>Claro</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item rounded-2 d-flex align-items-center gap-2 py-2"
+                                    type="button" onclick="setFieldServiceTheme('super-dark')">
+                                <i class="bi bi-circle-fill text-secondary"></i>
+                                <span>Super Dark (AMOLED)</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- User Profile / Logout Dropdown -->
+                <div class="dropdown" sec:authorize="isAuthenticated()">
+                    <button class="fs-avatar border-0 p-0"
+                            type="button"
+                            id="userMenuDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            style="cursor: pointer;">
+                        <span sec:authentication="principal.initials">JS</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end fs-modal-content p-2" aria-labelledby="userMenuDropdown">
+                        <li class="px-3 py-2 border-bottom border-secondary border-opacity-25 mb-1">
+                            <div class="fw-bold" sec:authentication="principal.name">João Silva</div>
+                            <div class="small text-secondary-fs" sec:authentication="principal.username">tecnico@fieldservice.com</div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item rounded-2 d-flex align-items-center gap-2 py-2" th:href="@{/perfil}">
+                                <i class="bi bi-person"></i>
+                                <span>Meu Perfil</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider border-secondary border-opacity-25"></li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                <button type="submit" class="dropdown-item rounded-2 d-flex align-items-center gap-2 py-2 text-danger">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sair</span>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Area -->
+    <main class="fs-main-content">
+        <div class="container" th:insert="${content}">
+            <!-- Dynamic Page Content replaces this -->
+        </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation (Aparece apenas em telas móveis) -->
+    <nav class="fs-bottom-nav">
+        <a th:href="@{/inicio}"
+           class="fs-bottom-nav-item"
+           th:classappend="${activePage == 'inicio' ? 'active' : ''}">
+            <i class="bi bi-house-door"></i>
+            <span>Início</span>
+        </a>
+        <a th:href="@{/chamados}"
+           class="fs-bottom-nav-item"
+           th:classappend="${activePage == 'chamados' ? 'active' : ''}">
+            <i class="bi bi-ticket-detailed"></i>
+            <span>Chamados</span>
+        </a>
+        <a th:href="@{/perfil}"
+           class="fs-bottom-nav-item"
+           th:classappend="${activePage == 'perfil' ? 'active' : ''}">
+            <i class="bi bi-person"></i>
+            <span>Perfil</span>
+        </a>
+    </nav>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
